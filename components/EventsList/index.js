@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Event } from "../Event";
 
 export const EventsList = ({ events }) => {

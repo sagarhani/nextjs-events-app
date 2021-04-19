@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Nav, Logo, Hamburger, Menu, MenuLink } from "./styles";
 import Link from "next/link";
 

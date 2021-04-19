@@ -14,3 +14,7 @@ export const addNewEvent = async (db, event) => {
     })
     .then(({ ops }) => ops[0]);
 };
+
+export const getEvent = async (db, eventId) => {
+  return await db.collection("events").findOne({ _id: eventId });
+};

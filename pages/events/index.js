@@ -11,8 +11,6 @@ const Events = ({ allEvents }) => {
 };
 
 export const getStaticProps = async () => {
-  // uncomment this after first deployment
-
   const allEventsResponse = await fetch(`${server}/api/events`);
   const allEvents = await allEventsResponse.json();
 
