@@ -1,29 +1,23 @@
 import { server } from "../../config";
+import { EventsList } from "../../components/EventsList";
+import { EventsListContainer } from "../../components/EventsList/styles";
 
 const Events = ({ allEvents }) => {
   return (
-    <div>
-      <h3>Featured Events</h3>
-      {allEvents.map(event => {
-        return (
-          <div key={event._id}>
-            <p>{event.title}</p>
-            <small>{event.description}</small>
-          </div>
-        );
-      })}
-    </div>
+    <EventsListContainer>
+      <EventsList events={allEvents} />
+    </EventsListContainer>
   );
 };
 
 export const getStaticProps = async () => {
   // uncomment this after first deployment
 
-  //   const allEventsResponse = await fetch(`${server}/api/events`);
-  //   const allEvents = await allEventsResponse.json();
+  const allEventsResponse = await fetch(`${server}/api/events`);
+  const allEvents = await allEventsResponse.json();
 
   return {
-    props: { allEvents: [] }
+    props: { allEvents }
   };
 };
 

@@ -27,6 +27,7 @@ export const Nav = styled.div`
   right: 0;
   left: 0px;
   background-color: #f6415f;
+  z-index: 1000;
 `;
 
 export const Logo = styled.a`
