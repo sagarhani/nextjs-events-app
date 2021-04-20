@@ -1,6 +1,12 @@
 import { signIn, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import {
+  LoginPageContainer,
+  LoginCard,
+  StyledGoogleLogo,
+  GoogleSignInButton
+} from "../styles/signInStyles";
 
 const SignIn = () => {
   const [session, loading] = useSession();
@@ -12,7 +18,20 @@ const SignIn = () => {
     }
   }, [session]);
 
-  return <button onClick={() => signIn("github")}>signin</button>;
+  return (
+    <LoginPageContainer>
+      <LoginCard>
+        <GoogleSignInButton onClick={() => signIn("google")}>
+          <StyledGoogleLogo
+            src="/assets/images/google-logo.svg"
+            width={22}
+            height={22}
+          />
+          <span>Sign in with Google</span>
+        </GoogleSignInButton>
+      </LoginCard>
+    </LoginPageContainer>
+  );
 };
 
 export default SignIn;
