@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Nav, Logo, Hamburger, Menu, MenuLink } from "./styles";
 import Link from "next/link";
+import { useSession } from "next-auth/client";
 
 export const NavBar = () => {
+  const [session, loading] = useSession();
+  const username = session?.user?.name;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Nav>
@@ -30,11 +33,20 @@ export const NavBar = () => {
             <a>About</a>
           </Link>
         </MenuLink>
-        <MenuLink>
-          <Link href="/signin">
-            <a>Sign in</a>
-          </Link>
-        </MenuLink>
+        {!username && (
+          <MenuLink>
+            <Link href="/signin">
+              <a>Sign in</a>
+            </Link>
+          </MenuLink>
+        )}
+        {username && (
+          <MenuLink>
+            <Link href="/profile">
+              <a>Hey, {username}</a>
+            </Link>
+          </MenuLink>
+        )}
       </Menu>
     </Nav>
   );

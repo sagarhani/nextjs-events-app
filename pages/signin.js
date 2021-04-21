@@ -18,6 +18,10 @@ const SignIn = () => {
     }
   }, [session]);
 
+  if (session) {
+    router.replace("/events");
+  }
+
   return (
     <LoginPageContainer>
       <LoginCard>
