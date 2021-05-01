@@ -23,6 +23,13 @@ export const NavBar = () => {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
+        {session && (
+          <MenuLink>
+            <Link href="/events/addNew">
+              <a>Add Event</a>
+            </Link>
+          </MenuLink>
+        )}
         <MenuLink>
           <Link href="/events">
             <a>All Events</a>
