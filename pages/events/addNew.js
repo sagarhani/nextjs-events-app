@@ -14,17 +14,30 @@ const AddNewEvent = () => {
     defaultValues: {
       title: "",
       description: "",
-      imageUrl: "",
+      image: "",
       isFeatured: false
     }
   });
 
-  const createEventHandler = async data => {
+  const createEventHandler = async ({
+    title,
+    image,
+    description,
+    isFeatured
+  }) => {
+    let formData = new FormData();
+    formData.append("title", title);
+    formData.append("image", image[0]);
+    formData.append("description", description);
+    formData.append("isFeatured", isFeatured);
+
     const response = await fetch("/api/events/addNew", {
       method: "POST",
-      body: JSON.stringify(data),
-      headers: new Headers({ "content-type": "application/json" })
-    }).then(res => res.json());
+      body: formData
+    });
+    if (response) {
+      router.push("/events");
+    }
   };
 
   useEffect(() => {
@@ -59,11 +72,12 @@ const AddNewEvent = () => {
           />
         </div>
         <div>
-          <label htmlFor="imageUrl">Meetup Image</label>
+          <label htmlFor="image">Meetup Image</label>
           <input
             type="url"
-            name="imageUrl"
-            {...register("imageUrl", { required: true, maxLength: 200 })}
+            type="file"
+            name="image"
+            {...register("image", { required: true, maxLength: 200 })}
           />
         </div>
         <div>
