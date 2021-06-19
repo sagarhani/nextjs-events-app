@@ -26,7 +26,7 @@ handler.use(middleware);
 handler.post(async (req, res) => {
   try {
     const form = new formidable.IncomingForm();
-    form.uploadDir = "./public/uploads";
+    // form.uploadDir = "./public/uploads";
     form.keepExtensions = true;
     form.parse(req, (err, fields, files) => {
       if (err) {
