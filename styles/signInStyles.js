@@ -9,17 +9,14 @@ export const LoginPageContainer = styled.div`
 
 export const LoginCard = styled.div`
   ${flexDisplayCenter()};
-
   background: white;
   padding: 1.75em 1.75em 2em;
-  flex-direction: column;
   margin: 10px 20px;
   border-radius: 6px;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 1px 3px 0 ${colors.pageShadow};
   transition: transform 0.15s ease-in-out;
-  justify-content: space-between;
   width: 500px;
   height: 350px;
 `;

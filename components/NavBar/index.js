@@ -23,21 +23,9 @@ export const NavBar = () => {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        {session && (
-          <MenuLink>
-            <Link href="/events/addNew">
-              <a>Add Event</a>
-            </Link>
-          </MenuLink>
-        )}
         <MenuLink>
           <Link href="/events">
             <a>All Events</a>
-          </Link>
-        </MenuLink>
-        <MenuLink>
-          <Link href="/signin">
-            <a>About</a>
           </Link>
         </MenuLink>
         {!username && (
@@ -47,12 +35,19 @@ export const NavBar = () => {
             </Link>
           </MenuLink>
         )}
-        {username && (
-          <MenuLink>
-            <Link href="/profile">
-              <a>Hey, {username}</a>
-            </Link>
-          </MenuLink>
+        {session && (
+          <>
+            <MenuLink>
+              <Link href="/events/addNew">
+                <a>Add Event</a>
+              </Link>
+            </MenuLink>
+            <MenuLink>
+              <Link href="/profile">
+                <a>Hey, {username}</a>
+              </Link>
+            </MenuLink>
+          </>
         )}
       </Menu>
     </Nav>
